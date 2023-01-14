@@ -48,7 +48,7 @@ public class swea_1959_230114 {
 					answer = sum;
 				}
 			}
-			System.out.println("#"+test_case+" "+answer); 
+			System.out.println("#"+test_case+" "+answer+"гоюл"); 
 			
 			
 		}
