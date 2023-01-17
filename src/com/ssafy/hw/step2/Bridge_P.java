@@ -1,6 +1,6 @@
 package com.ssafy.hw.step2;
 
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.Scanner;
 
 public class Bridge_P {
@@ -10,28 +10,28 @@ public class Bridge_P {
 		Scanner sc = new Scanner(System.in);
 
 		int n = sc.nextInt();
-		// n * n Å©±â ¹è¿­ ¼±¾ð ( Áöµµ )
+		// n * n Å©ï¿½ï¿½ ï¿½è¿­ ï¿½ï¿½ï¿½ï¿½ ( ï¿½ï¿½ï¿½ï¿½ )
 		int[][] map = new int[n][n];
 		
-		// Áöµµ Á¤º¸ ÀÔ·Â ¹Þ±â
+		// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ô·ï¿½ ï¿½Þ±ï¿½
 		for ( int i = 0 ; i < n ; i++ ) {
 			for ( int j = 0 ; j < n; j++ ) {
 				map[i][j] = sc.nextInt();
 			}
 		}
 		
-		// ÃÖ´ë°ª ÀúÀå
+		// ï¿½Ö´ë°ª ï¿½ï¿½ï¿½ï¿½
 		int maxDistance = 0;
 		
 		for ( int i = 0 ; i < n ; i++ ) {
 			for ( int j = 0 ; j < n ; j++ ) {
 				
-				// Áö±Ý À§Ä¡°¡ ¼¶ÀÎÁö °Ë»ç
+				// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 				if ( map[i][j] == 1 ) {
 					
-					// ¼¶ÀÌ¸é ÇöÀç À§Ä¡·ÎºÎÅÍ »ç¹æÅ½»ö ÇÏ¿© °¡·Î ¶Ç´Â ¼¼·Î¿¡ ÀÖ´Â ¼¶°ú °Å¸® ÃøÁ¤, ÃÖ´ë°ª ÀúÀå
+					// ï¿½ï¿½ï¿½Ì¸ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Îºï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Å½ï¿½ï¿½ ï¿½Ï¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ç´ï¿½ ï¿½ï¿½ï¿½Î¿ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Å¸ï¿½ ï¿½ï¿½ï¿½ï¿½, ï¿½Ö´ë°ª ï¿½ï¿½ï¿½ï¿½
 					
-					// µ¿ÂÊÀÌ 1ÀÎÁö °Ë»ç
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 					for (int d = 1; d < n-j ; d++) {
 						if ( map[i][j+d] == 1 ) {
 							maxDistance = Math.max( maxDistance , d );
@@ -39,7 +39,7 @@ public class Bridge_P {
 						}
 					}
 					
-					// ¼­ÂÊÀÌ 1ÀÎÁö °Ë»ç
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 					for (int d = 1; d <= j; d++) {
 						if ( map[i][j-d] == 1 ) {
 							maxDistance = Math.max( maxDistance , d );
@@ -47,7 +47,7 @@ public class Bridge_P {
 						}
 					}
 					
-					// ºÏÂÊÀÌ 1ÀÎÁö °Ë»ç
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 					for (int d = 1; d <= i ; d++) {
 						if ( map[i-d][j] == 1 ) {
 							maxDistance = Math.max( maxDistance , d );
@@ -55,7 +55,7 @@ public class Bridge_P {
 						}
 					}
 					
-					// ³²ÂÊÀÌ 1ÀÎÁö °Ë»ç
+					// ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ 1ï¿½ï¿½ï¿½ï¿½ ï¿½Ë»ï¿½
 					for (int d = 1; d < n-i ; d++) {
 						if ( map[i+d][j] == 1 ) {
 							maxDistance = Math.max( maxDistance , d );
