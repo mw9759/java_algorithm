@@ -3,7 +3,7 @@ package com.ssafy.ws.step3;
 import java.util.*;
 import java.io.*;
 /**
- * B±¸È¹ÀÇ ºôµù ÃÖ°í ³ôÀÌ ±¸ÇÏ±â
+ * Bï¿½ï¿½È¹ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ö°ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ï±ï¿½
  */ 
 public class BuildingTest {
 
@@ -11,44 +11,57 @@ public class BuildingTest {
 		System.setIn(new FileInputStream("src/input.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		
-		int test_case = Integer.parseInt(br.readLine());
-		for(int tc = 1; tc < test_case+1; tc++) {
-			int n = Integer.parseInt(br.readLine());
+		//int test_case = Integer.parseInt(br.readLine());
+		//for(int tc = 1; tc < test_case+1; tc++) {
+		//	int n = Integer.parseInt(br.readLine());
 			
+		//	char arr[][] = new char[n][n];
+			
+		//	for(int i = 0; i < n; i++) {
+		//		String input = br.readLine();
+		//		arr[i] = input.toCharArray();
+	//		}
+			
+		Scanner sc = new Scanner(System.in);
+		int test_case = sc.nextInt();
+		for(int tc  = 1; tc < test_case+1; tc++) {
+			int n = sc.nextInt();
 			char arr[][] = new char[n][n];
-			
 			for(int i = 0; i < n; i++) {
-				String input = br.readLine();
+				String input = sc.next();
 				arr[i] = input.toCharArray();
 			}
 			
 			int max_floor = 2;
 			for(int i = 0; i < n; i++) {
 				for(int j = 0; j < n; j++) {
-					//ºôµùÀÏ °æ¿ì
+					//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 					int check = 0;
 					if(arr[i][j] == 'B') {
-						//¿ìÃø
+						//ï¿½ï¿½ï¿½ï¿½
 						if(j < n-1) {
 							if(arr[i][j+1]=='G') {
 								check--;
+								break;
 							}
 							else
 								check++;
-							//¿ìÃø_»ó´Ü °ËÁõÀÌ ÇÊ¿äÇÑ °æ¿ì
+							//ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 							if(i>0) {
 								if(arr[i-1][j+1]=='G') {
 									check--;
+									break;
 								}
 								else
 									check++;
 							}
 							else
 								check++;
-							//¿ìÃø_ÇÏ´Ü °ËÁõÀÌ ÇÊ¿äÇÑ °æ¿ì
+							//ï¿½ï¿½ï¿½ï¿½_ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 							if(i<n-1) {
 								if(arr[i+1][j+1]=='G') {
 									check--;
+									break;
 								}
 								else
 									check++;
@@ -56,19 +69,19 @@ public class BuildingTest {
 							else
 								check++;
 						}
-						//°ËÁõÀÌ ÇÊ¿ä ¾ø´Â °æ¿ì+¿ìÃø »ó/ÇÏ´Üµµ °ËÁõÇÒ ÇÊ¿ä°¡ ¾øÀ½.
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½/ï¿½Ï´Üµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
 						else
 							check += 3;
 						
-						//ÁÂÃø
-						//ÁÂÃø °ËÁõÀÌ ÇÊ¿äÇÑ°æ¿ì
+						//ï¿½ï¿½ï¿½ï¿½
+						//ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½Ñ°ï¿½ï¿½
 						if(j > 0) {
 							if(arr[i][j-1]=='G') {
 								check--;
 							}
-							else//°ËÁõ Çß´Âµ¥ bÀÎ°æ¿ì
+							else//ï¿½ï¿½ï¿½ï¿½ ï¿½ß´Âµï¿½ bï¿½Î°ï¿½ï¿½
 								check++;
-							//ÁÂÃø_»ó´Ü °ËÁõÀÌ ÇÊ¿äÇÑ °æ¿ì
+							//ï¿½ï¿½ï¿½ï¿½_ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 							if(i>0) {
 								if(arr[i-1][j-1]=='G') {
 									check--;
@@ -78,7 +91,7 @@ public class BuildingTest {
 							}
 							else
 								check++;
-							//ÁÂÃø_ÇÏ´Ü °ËÁõÀÌ ÇÊ¿äÇÑ °æ¿ì
+							//ï¿½ï¿½ï¿½ï¿½_ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 							if(i<n-1) {
 								if(arr[i+1][j-1]=='G') {
 									check--;
@@ -89,11 +102,11 @@ public class BuildingTest {
 							else
 								check++;
 						}
-						//°ËÁõÀÌ ÇÊ¿ä ¾ø´Â °æ¿ì+ÁÂÃø »ó/ÇÏ´Üµµ °ËÁõÇÒ ÇÊ¿ä°¡ ¾øÀ½.
+						//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½+ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½/ï¿½Ï´Üµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ä°¡ ï¿½ï¿½ï¿½ï¿½.
 						else
 							check += 3;
 						
-						//»ó´Ü °ËÁõÀÌ ÇÊ¿äÇÑ °æ¿ì
+						//ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 						if(i > 0) {
 							if(arr[i-1][j] == 'G') {
 								check--;
@@ -103,7 +116,7 @@ public class BuildingTest {
 						}else
 							check++;
 						
-						//ÇÏ´Ü °ËÁõÀÌ ÇÊ¿äÇÑ °æ¿ì
+						//ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
 						if(i < n-1) {
 							if(arr[i+1][j] == 'G') {
 								check--;
