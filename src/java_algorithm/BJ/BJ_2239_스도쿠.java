@@ -38,13 +38,17 @@ public class BJ_2239_스도쿠 {
 	}
 	
 	private static void sudoku(int idx) {
-//		if(idx>0) {
-//			int bx = point.get(idx-1).x;
-//			int by = point.get(idx-1).y;
-//			if(arr[bx][by] == 0) return;
-//		}
+		if(idx>0) {
+			System.out.println("zzzzz");
+			int bx = point.get(idx-1).x;
+			int by = point.get(idx-1).y;
+			if(arr[bx][by] == 0) {
+				return;
+			}
+		}
 		if(flag) return;
 		if(idx == point.size()) {
+			System.out.println(idx);
 			boolean flags = true;
 			for(int i = 1; i<=9; i++) {
 				for(int j = 1; j<=9; j++) {
@@ -63,10 +67,13 @@ public class BJ_2239_스도쿠 {
 		for(int i = 1; i<=9; i++) {
 			if(checkX(x,i) && checkY(y,i) && check33((x-1)/3,(y-1)/3,i)) {
 				arr[x][y] = i;
+				System.out.println(idx+" "+i);
 				sudoku(idx+1);
 			}
 		}
 	}
+	
+	
 	private static boolean checkX(int x, int num) {
 		for(int i = 1; i<=9; i++) {
 			if(arr[x][i] == num) return false;
