@@ -3,7 +3,6 @@ package java_algorithm.BJ;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 //스도쿠 빈칸의 좌표를 담을 객체.
 class Point1{
