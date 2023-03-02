@@ -30,7 +30,7 @@ public class 토마토 {
    static int answer;
 
    public static void main(String[] args) throws IOException {
-      // TODO Auto-generated method stub
+      // TODO Auto-generated method stubㄴ
       BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
       BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(System.out));
       StringTokenizer st = null;
