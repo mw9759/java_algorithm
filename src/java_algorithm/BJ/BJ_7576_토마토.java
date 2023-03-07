@@ -6,7 +6,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BJ_7576_토마토_손민우 {
+public class BJ_7576_토마토 {
 	
 	static int n, m, ungrow = 0;
 	static int[][] tomato;
