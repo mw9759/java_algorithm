@@ -18,7 +18,7 @@ public class BJ_18111_마인크래프트 {
 		
 		int minValue = Integer.MAX_VALUE;
 		int maxValue = Integer.MIN_VALUE;
-		int time = 0;
+		int minTime = Integer.MAX_VALUE;
 		int height = 0;
 		
 		for(int i = 0; i<n; i++) {
@@ -31,15 +31,36 @@ public class BJ_18111_마인크래프트 {
 		}
 		
 		for(int i = minValue; i<=maxValue; i++) {
+			if(i > 256) break;
+			int time = 0;
+			int block = b;
 			for(int j = 0; j<n; j++) {
 				for(int k = 0; k<m; k++) {
-					if()
 					if(arr[j][k] < i) {
 						time += i-arr[j][k];
+						block -= i-arr[j][k];
+					}
+					else if(arr[j][k] > i) {
+						time += 2*(arr[j][k]-i);
+						block += arr[j][k]-i;
 					}
 				}
 			}
+			// 만약 블록이 -이면 평탄화 불가 높이
+			if(block < 0) continue;
+			//만약 최소시간이 같은 경우
+			if(minTime == time) {
+				// 높이를 비교해서 더 높은 땅을 출력
+				height = height>i ? height:i;
+			}
+			// 다른경우 최소시간과 그 높이
+			else {
+				minTime = Integer.min(minTime, time);
+				if(minTime == time) height = i;
+			}
 		}
+		
+		System.out.println(minTime+" "+height);
 	}
 
 }
