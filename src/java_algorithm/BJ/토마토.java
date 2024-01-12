@@ -85,3 +85,98 @@ public class 토마토 {
    }
 
 }
+package java_algorithm.BJ;
+
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.PriorityQueue;
+import java.util.StringTokenizer;
+
+class Edge2 implements Comparable<Edge2>{
+	int source, destination, weight;
+	
+	public Edge2(int source, int destination, int weight) {
+		this.source = source;
+		this.destination = destination;
+		this.weight = weight;
+	}
+	
+	@Override
+	public int compareTo(Edge2 E) {
+		return this.weight - E.weight;
+	}
+}
+public class BJ_1647_도시분할계획 {
+
+	static int n, m;
+	static PriorityQueue<Edge2> que = new PriorityQueue<Edge2>();;
+	static int[] parent;
+	static int result;
+	static int max;
+	
+	public static void main(String[] args) throws Exception{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		StringTokenizer st = new StringTokenizer(br.readLine());
+		n = Integer.parseInt(st.nextToken());
+		m = Integer.parseInt(st.nextToken());
+		
+		parent = new int[n+1];
+		
+		for(int i = 1; i<=n; i++) {
+			parent[i] = i;
+		}
+		
+		for(int i = 0; i<m; i++) {
+			st = new StringTokenizer(br.readLine());
+			int source = Integer.parseInt(st.nextToken());
+			int destination = Integer.parseInt(st.nextToken());
+			int weight = Integer.parseInt(st.nextToken());
+			
+			que.add(new Edge2(source, destination, weight));
+		}
+		
+		MST();
+		System.out.println(result-max);
+	}
+	
+	public static void MST(){
+		
+		while(!que.isEmpty()) {
+			Edge2 edge = que.poll();
+			
+			//int x = find(edge.source);
+			//int y = find(edge.destination);
+			
+			if(!isParent(edge.source, edge.destination)) {
+				result += edge.weight;
+				max = edge.weight;
+				union(edge.source,edge.destination);
+			}
+		}
+	}
+	public static boolean isParent(int x, int y) {
+		int xp = find(x);
+		int yp = find(y);
+		
+		if(xp!=yp) {
+			return false;
+		}
+		return true;
+	}
+	
+	public static int find(int vertex) {
+		if(parent[vertex] == vertex) {
+			return vertex;
+		}
+		return parent[vertex] = find(parent[vertex]);
+	}
+	
+	public static void union(int x, int y) {
+		int xp = find(x);
+		int yp = find(y);
+		parent[yp] = xp;
+	}
+
+}
