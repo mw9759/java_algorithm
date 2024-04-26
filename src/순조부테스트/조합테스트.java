@@ -26,7 +26,7 @@ public class 조합테스트 {
 			return;
 		}
 		
-		for(int i = start; i<=5; i++) {
+		for(int i = start; i<=2; i++) {
 			arr[cnt] = i;
 			중복있는조합(cnt+1, i);
 		}
