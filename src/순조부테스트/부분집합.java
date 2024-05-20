@@ -12,11 +12,11 @@ public class 부분집합 {
 	public static void main(String[] args) {
 		int n = 5;
 		visited = new boolean[n];
-		부분집합연습(0,0);
+		부분집합연습(0);
 		System.out.println("총 개수는? "+count);
 	}
 	
-	private static void 부분집합연습(int cnt, int start) {
+	private static void 부분집합연습(int cnt) {
 		if(cnt == 5) {
 			count++;
 			for(int i = 0; i<5; i++) {
@@ -29,9 +29,9 @@ public class 부분집합 {
 			return;
 		}
 		visited[cnt] = true;
-		부분집합연습(cnt+1, start+1);
+		부분집합연습(cnt+1);
 		visited[cnt] = false;
-		부분집합연습(cnt+1, start+1);
+		부분집합연습(cnt+1);
 		
 	}
 }
