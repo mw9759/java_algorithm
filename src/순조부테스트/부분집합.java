@@ -9,11 +9,28 @@ import java.util.Arrays;
 public class 부분집합 {
 	static boolean visited[];
 	static int count = 0;
+	static int toping[];
 	public static void main(String[] args) {
 		int n = 5;
 		visited = new boolean[n];
-		부분집합연습(0);
-		System.out.println("총 개수는? "+count);
+//		부분집합연습(0);
+//		System.out.println("총 개수는? "+count);
+		
+		toping = new int[3];
+		토핑조합(0);
+		
+	}
+	
+	private static void 토핑조합(int cnt) {
+		if(cnt == 3) {
+			System.out.println(Arrays.toString(toping));
+			return;
+		}
+		
+		toping[cnt] = 1;
+		토핑조합(cnt+1);
+		toping[cnt] = 0;
+		토핑조합(cnt+1);
 	}
 	
 	private static void 부분집합연습(int cnt) {

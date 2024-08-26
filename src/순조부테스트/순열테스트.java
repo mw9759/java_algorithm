@@ -14,11 +14,11 @@ public class 순열테스트 {
 		int n = 5;
 		arr = new int[n];
 		visited = new int[n+1];
-		중복있는순열(0);
-		System.out.println("총 몇개? "+count);
-//		count = 0;
-//		중복없는순열(0);
+//		중복있는순열(0);
 //		System.out.println("총 몇개? "+count);
+		count = 0;
+		중복없는순열(0);
+		System.out.println("총 몇개? "+count);
 	}
 	private static void 중복있는순열(int cnt) {
 		if(cnt ==5) {
@@ -27,7 +27,7 @@ public class 순열테스트 {
 			return;
 		}
 		
-		for(int i = 1; i<=2; i++) {
+		for(int i = 1; i<=3; i++) {
 			arr[cnt] = i;
 			중복있는순열(cnt+1);
 		}
@@ -40,7 +40,7 @@ public class 순열테스트 {
 			return;
 		}
 		
-		for(int i = 1; i<=5; i++) {
+		for(int i = 1; i<=4; i++) {
 			if(visited[i] == 0) {
 				visited[i] = 1;
 				arr[cnt] = i;
